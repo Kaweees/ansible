@@ -20,5 +20,6 @@
     - include: tasks/core-setup.yml
     - include: tasks/node-setup.yml
     - include: tasks/npm-packages.yml
+    - include: tasks/zsh-setup.yml
     - include: tasks/slack-setup.yml
     - include: tasks/dotfiles.yml

@@ -1,0 +1,53 @@
+- name: Install ZSH
+  apt: name=zsh state=present
+  tags: &tags_for_zsh_tasks [ 'install', 'productivity', 'dotfiles', 'zsh' ]
+  args:
+    creates: ~/.oh-my-zsh
+
+- name: Set zsh as default shell
+  ansible.builtin.user:
+    name: "{{ ansible_user }}"
+    shell: "{{ zsh_executable }}"
+  become: true
+  tags: *tags_for_zsh_tasks
+    
+- name: Change shell to zsh
+  shell: chsh -s $(which zsh)
+  tags: *tags_for_zsh_tasks
+
+- name: Check that the somefile.conf exists
+  stat:
+    path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
+  register: oh_my_stats
+  tags: *tags_for_zsh_tasks
+
+- name: Oh-My-Zsh
+  shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
+  tags: *tags_for_zsh_tasks
+  when: oh_my_stats.stat.exists == False
+  become_user: "{{ lookup('env', 'USER') }}"
+
+- name: Install zsh-autosuggestions
+  ansible.builtin.git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+    dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
+  tags: *tags_for_zsh_tasks
+
+- name: install zsh plugins
+  sudo: yes
+  ansible.builtin.git:
+    repo: 'https://github.com/{{ item }}.git'
+    dest: "~/.oh-my-zsh/plugins/{{ item }}"
+  tags: *tags_for_zsh_tasks
+  with_items:
+    - zsh-users/zsh-autosuggestions
+    - zsh-users/zsh-syntax-highlighting
+    - zsh-users/zsh-history-substring-search
+    - MichaelAquilina/zsh-auto-notify
+    - MichaelAquilina/zsh-you-should-use
+
+- name: Install zsh-nvm
+  ansible.builtin.git:
+    repo: 'https://github.com/lukechilds/zsh-nvm.git'
+    dest: "~/.oh-my-zsh/custom/plugins/zsh-nvm"
+  tags: *tags_for_zsh_tasks
