@@ -1,5 +1,5 @@
 - name: Install nodejs and npm
-  apt: 
+  apt:
     name: ["nodejs", "npm"]
   tags:
     - install
