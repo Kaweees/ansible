@@ -2,6 +2,8 @@
   <h1><em>~ansible</em></h1>
 </div>
 
+This playbook installs most of the software I use on my Linux machine for software development. This is a work in project, and things will probably change as the sands of time flow.
+
 # Project Structure
 ```
 . ansible/
@@ -13,9 +15,13 @@
 ├── local.yml       - ansible playbook to run locally
 ```
 
-## Setup
-Run this to start the setup for ubuntu with ansible locally.
+# Setup
 
-- Run this to start the setup for ubuntu with ansible remotely.
-`bash <(curl -s https://raw.githubusercontent.com/Kaweees/ansible/main/ansible-install)`
+## Running remotely
 
+It is best to run this playbook remotely, as it is designed to be executed on a fresh install of Linux. To do so, run the following command:
+```bash
+bash < <(curl -s https://raw.githubusercontent.com/Kaweees/ansible/main/ansible-install)
+```
+
+Enter your account password when prompted.

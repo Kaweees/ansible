@@ -10,7 +10,7 @@
     shell: "{{ zsh_executable }}"
   become: true
   tags: *tags_for_zsh_tasks
-    
+
 - name: Change shell to zsh
   shell: chsh -s $(which zsh)
   tags: *tags_for_zsh_tasks
