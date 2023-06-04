@@ -1,0 +1,32 @@
+---
+name: CI
+'on':
+  pull_request:
+  push:
+    branches:
+      - master
+      - main
+  schedule:
+    - cron: "10 2 * * 0"
+jobs:
+  test:
+    name: Molecule
+    runs-on: ubuntu-latest
+  steps:
+    - name: Checkout the codebase
+      uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - name: Install test dependencies
+      run: |
+        pip install ansible molecule[docker] yamllint ansible-lint
+        ansible --version
+        molecule --version
+    - name: Run Molecule tests
+      run: molecule test
+      env:
+        PY_COLORS: '1'
+        ANSIBLE_FORCE_COLOR: '1'
+        MOLECULE_DISTRO: ${{ matrix.distro }}
