@@ -1,18 +1,16 @@
 - name: Install ZSH
   apt: name=zsh state=present
   tags: &tags_for_zsh_tasks [ 'install', 'productivity', 'dotfiles', 'zsh' ]
-  args:
-    creates: ~/.oh-my-zsh
 
 - name: Set zsh as default shell
   ansible.builtin.user:
     name: "{{ ansible_user }}"
-    shell: "{{ zsh_executable }}"
+    shell: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
   become: true
   tags: *tags_for_zsh_tasks
 
 - name: Change shell to zsh
-  shell: chsh -s $(which zsh)
+  shell: sudo chsh -s $(which zsh)
   tags: *tags_for_zsh_tasks
 
 - name: Check that the somefile.conf exists
@@ -34,7 +32,7 @@
   tags: *tags_for_zsh_tasks
 
 - name: install zsh plugins
-  sudo: yes
+  become: true
   ansible.builtin.git:
     repo: 'https://github.com/{{ item }}.git'
     dest: "~/.oh-my-zsh/plugins/{{ item }}"
