@@ -2,6 +2,10 @@
 - hosts: localhost
   become: true
 
+  vars_files:
+    - vars/nvm.yml
+    - vars/node.yml
+
   vars:
     source_key: "./.ssh/id_rsa"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"

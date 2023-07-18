@@ -10,7 +10,7 @@ nvm_node_version: 18.16.0
 # nvm_node_version: 'latest'
 
 # path config
-nvm_install_path: ~/.nvm
+nvm_install_path: .nvm
 shell_init_file: ~/.bashrc
 
 # force rewrite nvm folder from remove git

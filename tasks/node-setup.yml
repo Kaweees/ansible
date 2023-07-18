@@ -1,54 +1,27 @@
-- name: Install nodejs and npm
-  become: true
-  apt:
-    name: ["nodejs", "npm"]
+---
+- name: Install nvm version {{ nvm_version }}
+  become: no
+  ansible.builtin.shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v{{ nvm_version }}/install.sh | bash
+  args:
+    executable: /bin/bash
+    chdir: "$HOME"
+    creates: "$HOME/.nvm/versions/{{ nvm_version }}"
+  when: nvm_version | regex_search('\\d.')
   tags:
     - install
+    - nvm
     - node
 
-- name: npmjs prefix
-  shell: mkdir -p ~/.local/.npm-global
+- name: Install Node.js version {{ nvm_node_version }}
+  become: no
+  ansible.builtin.shell: >
+    . $HOME/.nvm/nvm.sh && nvm install {{ nvm_node_version }}
+  args:
+    executable: /bin/bash
+    chdir: "$HOME"
+    creates: "$HOME/.nvm/versions/{{ nvm_node_version }}"
   tags:
     - install
-    - node
-
-- name: add npmjs to path
-  shell: PATH=~/.local/.npm-global/bin:$PATH
-  tags:
-    - install
-    - node
-
-- name: npmjs global settings
-  shell: npm config set prefix '~/.local/.npm-global'
-  tags:
-    - install
-    - node
-
-- name: npmjs global settings export path in case I don't have dotfiles installed
-  shell: export PATH=~/.local/.npm-global/bin:$PATH
-  tags:
-    - install
-    - node
-    - npm-path
-
-- name: Install npm package manager
-  apt:
-    name: npm
-    state: present
-  tags:
-    - install
-    - node
-
-- name: Install n package
-  npm:
-    name: n
-    global: yes
-  tags:
-    - install
-    - node
-
-- name: Install Node.js version 14
-  shell: ~/.local/.npm-global/bin/n 14
-  tags:
-    - install
+    - nvm
     - node
