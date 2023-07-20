@@ -6,12 +6,12 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+<div align="left">
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 
-<div align="center">
-  <h1><em>~ansible</em></h1>
 </div>
 
 <a href="https://github.com/Kaweees/ansible">
@@ -19,8 +19,15 @@
   <img alt="Text changing depending on mode. Light: 'Rust Logo Light Mode' Dark: 'Rust Logo Dark Mode'" src="assets/img/ansible-logo-dark-mode.png" align="right" width="150">
 </a>
 
+
+
+<div align="left">
+  <h1><em>~ansible</em></h1>
+</div>
+<div></div>
+
 <!-- ABOUT THE PROJECT -->
-This playbook installs most of the software I use on my Linux machine for software development. This is a work in project, and things will probably change as the sands of time flow.
+This playbook installs most of the software I use on my Linux machine for software development. This is a work-in-progress, and things will probably change as the sands of time flow.
 
 ### Built With
 [![Ansible][Ansible-shield]][Ansble-url]
@@ -30,26 +37,22 @@ This playbook installs most of the software I use on my Linux machine for softwa
 
 To get a local copy of the project up and running on your machine, follow these simple steps:
 
-### Prerequisites
-
-- Visual Studio Code
-  - Extensions in [extensions.json](.vscode/extensions.json) are installed
-- Pre-commit
-  - [pre-commit](https://pre-commit.com/#install) is configured via the [pre-commit framework](https://verdantfox.com/blog/view/how-to-use-git-pre-commit-hooks-the-hard-way-and-the-easy-way)
 
 ### Installation
 
 It is best to run this playbook remotely, as it is designed to be executed on a fresh install of Linux. To do so, run the following command:
 
-
 ```bash
 bash < <(curl -s https://raw.githubusercontent.com/Kaweees/ansible/main/ansible-install)
 ```
 
-Enter your account password when prompted.
+Enter your machine's password when prompted.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+
+
+### Running
 
 ###  Testing
 
@@ -76,14 +79,6 @@ Testing this playbook locally can be done by following the steps below:
     ```bash
     molecule test
     ```
-
-### Running
-
-To run this playbook locally, run the following command:
-
-```bash
-ansible-playbook local.yml
-```
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -113,7 +108,7 @@ See the [open issues](
 <!-- https://choosealicense.com/ -->
 ## License
 
-My ansible scripts are distributed under the terms of the GNU General Public License v3.0, because I belive that the democratization and decentralization of free and open source leads to projects that are mutully and equally beneficial to collaborators and users alike. See [LICENSE](LICENSE) for details and more information.
+My ansible scripts are distributed under the terms of the GNU General Public License v3.0, as I firmly believe that collaborating on free and open-source software fosters innovations that mutually and equitably beneficial to both collaborators and users alike. See [LICENSE](LICENSE) for details and more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
