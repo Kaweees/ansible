@@ -16,15 +16,12 @@
 
 <a href="https://github.com/Kaweees/ansible">
   <source media="(prefers-color-scheme: dark)" srcset="assets/img/ansible-logo-light-mode.png">
-  <img alt="Text changing depending on mode. Light: 'Rust Logo Light Mode' Dark: 'Rust Logo Dark Mode'" src="assets/img/ansible-logo-dark-mode.png" align="right" width="150">
+  <img alt="Text changing depending on mode. Light: 'Ansible Logo Light Mode' Dark: 'Ansible Logo Dark Mode'" src="assets/img/ansible-logo-dark-mode.png" align="right" width="150">
 </a>
-
-
 
 <div align="left">
   <h1><em>~ansible</em></h1>
 </div>
-<div></div>
 
 <!-- ABOUT THE PROJECT -->
 This playbook installs most of the software I use on my Linux machine for software development. This is a work-in-progress, and things will probably change as the sands of time flow.
@@ -50,7 +47,6 @@ Enter your machine's password when prompted.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-
 
 ### Running
 

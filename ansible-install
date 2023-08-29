@@ -1,6 +1,16 @@
-# Ansible Playbook
-# Path: ansible-install
 #!/usr/bin/env bash
+#
+# Title: Kaweees's Ansible Playbook
+# Description: A bash script to install Kaweee's Ansible playbook and run it.
+# Author: Your Name
+
+title() {
+  local color='\033[1;37m'
+  local nc='\033[0m'
+  printf "\n${color}$1${nc}\n"
+}
+
+title "Greetings, $USER. Let's install Kaweees's Ansible Playbook."
 
 # Install Ansible
 sudo apt update -y && sudo apt upgrade -y
