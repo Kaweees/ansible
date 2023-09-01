@@ -86,18 +86,24 @@ See the [open issues](
 
 ```
 . ansible/
-├── .ssh                      - ssh configuration files
-├── auth_codes                - auth codes for various services
-├── meta                      - metadata regarding this project for Ansible Galaxy
-├── molecule                  - molecule tests
-│   └── default
+├── .ssh/                     - ssh configuration files
+├── auth_codes/               - auth codes for various services
+├── meta/                     - metadata regarding this project for Ansible Galaxy
+├── molecule/                 - molecule tests
+│   └── default/              - default molecule scenario
 │       ├── converge.yml      - main ansible playbook
 │       ├── molecule.yml      - molecule configuration
 │       └── verify.yml        - molecule verification
-├── tasks                     - various ansible tasks
+├── tasks/                    - various ansible tasks
+├── vars/                     - various ansible variables
+├── .ansible-lint             - ansible-lint configuration
+├── .editorconfig             - editorconfig configuration
+├── .yamllint                 - yamllint configuration
+├── Dockerfile                - dockerfile for molecule tests
 ├── README.md                 - you are here
-├── ansible-run               - entry point that install ansible and runs the playbook
-└── local.yml                 - ansible playbook to run locally
+├── ansible-install           - entry point that install ansible and runs the playbook
+├── local.yml                 - ansible playbook to run locally
+└── nvim.Dockerfile           - dockerfile for neovim
 ```
 
 <!-- LICENSE -->
