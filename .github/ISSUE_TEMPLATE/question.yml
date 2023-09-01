@@ -1,0 +1,24 @@
+# https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema
+name: ❓ Ask a Question
+description: Ask a question about a bug, feature, or anything in the project!
+title: "[QUESTION]: <title>"
+labels: [question]
+assignees: []
+body:
+  - type: checkboxes
+    attributes:
+      label: Search before asking
+      description: >
+        🔍 Please search the [issues](https://github.com/Kaweees/ansible/issues) to see if a similar bug report already exists.
+      options:
+        - label: >
+            I have searched the [project's issues](https://github.com/Kaweees/ansible) and found no similar bug report.
+          required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Question
+      description: ❓ What is your question?
+      placeholder: "Ex. How do I configure [...]?\ I tried [...]\n\n💡 ProTip! Include as much information as possible (screenshots, logs, tracebacks etc.) to receive the most helpful response.\n"
+    validations:
+      required: true

@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+- name: 📚 Documentation
+  url: https://miguelvf.dev/blog/
+  about: View my blog for more information about my Ansible Playbook!
