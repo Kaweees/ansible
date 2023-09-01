@@ -5,6 +5,7 @@
   vars_files:
     - vars/nvm.yml
     - vars/node.yml
+    - vars/zsh.yml
 
   vars:
     source_key: "./.ssh/id_rsa"
@@ -24,10 +25,9 @@
 
   tasks:
     - include: tasks/ssh.yml
-    - include: tasks/git-setup.yml
     - include: tasks/core-setup.yml
     - include: tasks/node-setup.yml
-    - include: tasks/npm-packages.yml
     - include: tasks/zsh-setup.yml
     - include: tasks/slack-setup.yml
     - include: tasks/dotfiles.yml
+    - include: tasks/git-setup.yml

@@ -1,14 +1,7 @@
-- name: Git personal setup email
+- name: Git configuration file setup
   git_config:
-    name: user.email
+    name: include.path
     scope: global
-    value: "miguel.villafloran@gmail.com"
-  tags:
-  - git-personal
-- name: Git personal setup name
-  git_config:
-    name: user.name
-    scope: global
-    value: "Kaweees"
+    file: "{{ lookup('env', 'HOME') }}/.gitconfig"
   tags:
   - git-personal

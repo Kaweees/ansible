@@ -1,16 +1,16 @@
 - name: Install ZSH
-  apt: name=zsh state=present
+  apt: name=zsh
   tags: &tags_for_zsh_tasks [ 'install', 'productivity', 'dotfiles', 'zsh' ]
+
+- name: Change shell to zsh
+  shell: chsh -s $(which zsh)
+  tags: *tags_for_zsh_tasks
 
 - name: Set zsh as default shell
   ansible.builtin.user:
-    name: "{{ ansible_user }}"
+    name: "{{ lookup('env', 'USER') }}"
     shell: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
   become: true
-  tags: *tags_for_zsh_tasks
-
-- name: Change shell to zsh
-  shell: sudo chsh -s $(which zsh)
   tags: *tags_for_zsh_tasks
 
 - name: Check that the somefile.conf exists
@@ -34,18 +34,7 @@
 - name: install zsh plugins
   become: true
   ansible.builtin.git:
-    repo: 'https://github.com/{{ item }}.git'
-    dest: "~/.oh-my-zsh/plugins/{{ item }}"
+    repo: 'https://github.com/{{ item.source }}.git'
+    dest: "~/.oh-my-zsh/plugins/{{ item.name }}"
   tags: *tags_for_zsh_tasks
-  with_items:
-    - zsh-users/zsh-autosuggestions
-    - zsh-users/zsh-syntax-highlighting
-    - zsh-users/zsh-history-substring-search
-    - MichaelAquilina/zsh-auto-notify
-    - MichaelAquilina/zsh-you-should-use
-
-- name: Install zsh-nvm
-  ansible.builtin.git:
-    repo: 'https://github.com/lukechilds/zsh-nvm.git'
-    dest: "~/.oh-my-zsh/custom/plugins/zsh-nvm"
-  tags: *tags_for_zsh_tasks
+  with_items: "{{ oh_my_zsh_plugins }}"

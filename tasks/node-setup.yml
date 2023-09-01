@@ -13,15 +13,28 @@
     - nvm
     - node
 
-- name: Install Node.js version {{ nvm_node_version }}
+- name: Source nvm to enable it
   become: no
   ansible.builtin.shell: >
-    . $HOME/.nvm/nvm.sh && nvm install {{ nvm_node_version }}
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
   args:
     executable: /bin/bash
     chdir: "$HOME"
-    creates: "$HOME/.nvm/versions/{{ nvm_node_version }}"
   tags:
     - install
     - nvm
     - node
+
+- name: Install npm global packages
+  become: true
+  npm:
+    name: "{{ item.name | default(item) }}"
+    version: "{{ item.version | default(omit) }}"
+    global: true
+    state: "{{ item.state | default('present') }}"
+  tags:
+    - install
+    - node
+  with_items: "{{ nodejs_npm_global_packages }}"
