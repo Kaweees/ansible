@@ -1,0 +1,45 @@
+- name: Install required CLI utilities
+  become: true
+  package:
+    name:
+      - ansible
+      - atool
+      - autoconf
+      - build-essential
+      - curl
+      - dkms # Dynamic Kernel Module Support
+      - ffmpeg
+      - firmware-misc-nonfree
+      - fzf
+      - gcc
+      - git
+      - libtool
+      - lm-sensors
+      - make
+      - man
+      - network-manager # nmtui
+      - network-manager-gnome # nm-connection-editor
+      - nvidia-driver
+      - ripgrep
+      - stow
+      - sudo
+      - tree
+      - unzip
+      - wget
+  tags:
+    - minimal-install
+    - install
+    - core
+
+- name: Install additional CLI utilities
+  become: true
+  package:
+    name:
+    - htop
+    - neofetch
+    - nmap
+    - ranger
+    - cowsay
+  tags:
+    - install
+    - core

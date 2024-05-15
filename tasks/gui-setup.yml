@@ -1,0 +1,18 @@
+- name: Install Xorg utilities
+  become: true
+  package:
+    name:
+      - xserver-xorg-core
+      # - xserver-xorg-video-nvidia
+      # - xorg-video-abi-11
+      - xinit
+      - xinput
+      - xclip
+      - x11-xserver-utils
+      - libx11-dev
+      - libxinerama-dev
+      - libxft-dev
+  tags:
+    - minimal-install
+    - install
+    - xorg

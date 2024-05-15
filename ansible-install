@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #
 # Title: Kaweees's Ansible Playbook
-# Description: A bash script to install Kaweee's Ansible playbook and run it.
-# Author: Your Name
+# Description: A bash script to install Kaweees's Ansible playbook and run it.
+# Author: Miguel Villa Floran
 
 title() {
   local color='\033[1;37m'
@@ -16,9 +16,11 @@ title "Greetings, $USER. Let's install Kaweees's Ansible Playbook."
 sudo apt update -y && sudo apt upgrade -y
 sudo apt install -y software-properties-common
 sudo add-apt-repository --yes --update ppa:ansible/ansible
-sudo apt install -y ansible git
+sudo apt install -y ansible git cowsay
 
-# Execute Ansible playbook
-ansible-pull -K -U https://github.com/Kaweees/ansible.git -t install local.yml
-# Or run locally
-# ansible-playbook -K local.yml -t install
+# Execute Ansible playbook remotely
+# ansible-pull -K -U https://github.com/Kaweees/ansible.git local.yml --ask-become-pass --tags minimal-install
+
+# Clone and execute Ansible playbook locally
+git clone https://github.com/Kaweees/ansible.git ~/Documents/GitHub/Projects/ansible --recusive && cd ~/Documents/GitHub/Projects/ansible
+ansible-playbook -K local.yml --ask-become-pass --tags minimal-install

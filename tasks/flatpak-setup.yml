@@ -1,0 +1,42 @@
+- name: Install flatpak
+  become: true
+  package:
+    name:
+      - flatpak
+  tags:
+    - minimal-install
+    - install
+    - flatpak
+
+- name: Add flathub repo
+  become: true
+  shell: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  tags:
+    - minimal-install
+    - install
+    - flatpak
+
+- name: Install flatpak core utilities
+  flatpak:
+    name:
+      - com.github.tchx84.Flatseal
+      - com.vivaldi.Vivaldi
+
+  tags:
+    - minimal-install
+    - install
+    - flatpak
+
+- name: Install flatpak GUI extras
+  flatpak:
+    name:
+      - camp.nook.nookdesktop
+      - com.axosoft.GitKraken
+      - com.slack.Slack
+      - com.spotify.Client
+      - io.github.shiftey.Desktop
+      - org.signal.Signal
+      - org.qbittorrent.qBittorrent
+  tags:
+    - install
+    - flatpak

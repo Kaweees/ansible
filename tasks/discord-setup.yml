@@ -1,0 +1,28 @@
+
+- name: Download Discord
+  get_url:
+    url: "https://discord.com/api/download?platform=linux&format=deb"
+    dest: /tmp/discord.deb
+  tags:
+    - minimal-install
+    - install
+    - discord
+
+- name: Install Discord
+  become: true
+  apt:
+    deb: /tmp/discord.deb
+    state: present
+  tags:
+    - minimal-install
+    - install
+    - discord
+
+- name: Remove Discord .deb package
+  file:
+    path: /tmp/discord.deb
+    state: absent
+  tags:
+    - minimal-install
+    - install
+    - discord

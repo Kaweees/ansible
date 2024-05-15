@@ -1,0 +1,48 @@
+- name: Download neovim
+  become: true
+  ansible.builtin.shell:
+    cmd: "curl https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz"
+  tags:
+    - minimal-install
+    - install
+    - neovim
+- name: Remove old neovim directory
+  become: true
+  ansible.builtin.shell:
+    cmd: "rm -rf /opt/nvim-linux64"
+  tags:
+    - minimal-install
+    - install
+    - neovim
+- name: Create neovim directory
+  become: true
+  ansible.builtin.shell:
+    cmd: "mkdir -p /opt/nvim-linux64"
+  tags:
+    - minimal-install
+    - install
+    - neovim
+- name: Change neovim directory to read and execute for everyone
+become: true
+  ansible.builtin.shell:
+    cmd: "chmod a+rX /opt/nvim-linux64"
+  tags:
+    - minimal-install
+    - install
+    - neovim
+- name: Extract neovim
+  become: true
+  ansible.builtin.shell:
+    cmd: "tar -C /opt -xzf nvim-linux64.tar.gz"
+  tags:
+    - minimal-install
+    - install
+    - neovim
+- name: Create symlink for neovim
+  become: true
+  ansible.builtin.shell:
+    cmd: "ln -sf /opt/nvim-linux64/bin/nvim /usr/local/bin/"
+  tags:
+    - minimal-install
+    - install
+    - neovim

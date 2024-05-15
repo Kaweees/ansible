@@ -37,13 +37,25 @@ To get a local copy of the project up and running on your machine, follow these 
 
 ### Installation
 
-It is best to run this playbook remotely, as it is designed to be executed on a fresh install of Linux. To do so, run the following command:
+It is best to run this playbook remotely, as it is designed to be executed on a fresh install of Linux. To do so, run the following commands:
 
-```bash
-bash < <(curl -s https://raw.githubusercontent.com/Kaweees/ansible/main/ansible-install)
-```
+1. Add your user to the sudoers group
+   ```bash
+   # execute the following commands from root
+   apt install -y sudo curl
+   sudo usermod -aG sudo <username>
+   ```
+2. Execute the ansible-install script
+   ```bash
+   bash < <(curl -s https://raw.githubusercontent.com/Kaweees/ansible/main/ansible-install)
+   ```
+3. Start and enable NetworkManager
+   ```bash
+   sudo systemctl start NetworkManager #.service
+   sudo systemctl enable NetworkManager #.service
+   ```
 
-Enter your machine's password when prompted.
+Enter your machine's password when prompted by Ansible.
 
 <!-- USAGE EXAMPLES -->
 ## Usage

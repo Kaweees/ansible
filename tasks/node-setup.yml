@@ -38,3 +38,7 @@
     - install
     - node
   with_items: "{{ nodejs_npm_global_packages }}"
+
+- name: Install pnpm
+  ansible.builtin.shell:
+    cmd: "curl -fsSL https://get.pnpm.io/install.sh | sh -"
