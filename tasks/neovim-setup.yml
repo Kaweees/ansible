@@ -46,3 +46,9 @@ become: true
     - minimal-install
     - install
     - neovim
+- name: Install packer.nvim plugin
+  become: true
+  git:
+    repo: https://github.com/wbthomason/packer.nvim
+    dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
