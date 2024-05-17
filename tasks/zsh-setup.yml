@@ -1,40 +1,6 @@
-- name: Install ZSH
-  apt: name=zsh
-  tags: &tags_for_zsh_tasks [ 'install', 'productivity', 'dotfiles', 'zsh' ]
-
-- name: Change shell to zsh
-  shell: chsh -s $(which zsh)
-  tags: *tags_for_zsh_tasks
-
 - name: Set zsh as default shell
-  ansible.builtin.user:
-    name: "{{ lookup('env', 'USER') }}"
-    shell: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
-  become: true
-  tags: *tags_for_zsh_tasks
-
-- name: Check that the somefile.conf exists
-  stat:
-    path: "{{ lookup('env', 'HOME') }}/.oh-my-zsh"
-  register: oh_my_stats
-  tags: *tags_for_zsh_tasks
-
-- name: Oh-My-Zsh
-  shell: curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh > ~/.oh-my-installer && chmod +x ~/.oh-my-installer && ~/.oh-my-installer
-  tags: *tags_for_zsh_tasks
-  when: oh_my_stats.stat.exists == False
-  become_user: "{{ lookup('env', 'USER') }}"
-
-- name: Install zsh-autosuggestions
-  ansible.builtin.git:
-    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
-    dest: "~/.oh-my-zsh/plugins/zsh-autosuggestions"
-  tags: *tags_for_zsh_tasks
-
-- name: install zsh plugins
-  become: true
-  ansible.builtin.git:
-    repo: 'https://github.com/{{ item.source }}.git'
-    dest: "~/.oh-my-zsh/plugins/{{ item.name }}"
-  tags: *tags_for_zsh_tasks
-  with_items: "{{ oh_my_zsh_plugins }}"
+  shell: chsh -s $(which zsh)
+  tags:
+    - minimal-install
+    - install
+    - zsh

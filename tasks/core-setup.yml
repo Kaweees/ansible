@@ -26,6 +26,7 @@
       - tree
       - unzip
       - wget
+      - zsh
   tags:
     - minimal-install
     - install
