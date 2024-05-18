@@ -13,6 +13,7 @@
       - fzf
       - gcc
       - git
+      - libnotify-bin
       - libtool
       - lm-sensors
       - make
