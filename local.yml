@@ -37,6 +37,7 @@
     - include: tasks/gui-setup.yml
     - include: tasks/flatpak-setup.yml
     - include: tasks/discord-setup.yml
+    - include: tasks/gh-setup.yml
     - include: tasks/neovim-setup.yml
     - include: tasks/zsh-setup.yml
     # - include: tasks/dotfiles.yml
