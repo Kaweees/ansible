@@ -19,7 +19,6 @@
       - man
       - network-manager # nmtui
       - network-manager-gnome # nm-connection-editor
-      - nvidia-driver
       - ripgrep
       - stow
       - sudo

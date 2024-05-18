@@ -13,14 +13,11 @@ title() {
 title "Greetings, $USER. Let's install Kaweees's Ansible Playbook."
 
 # Install Ansible
-sudo apt update -y && sudo apt upgrade -y
-sudo apt install -y software-properties-common
-sudo add-apt-repository --yes --update ppa:ansible/ansible
-sudo apt install -y ansible git cowsay
+sudo apt update -y && sudo apt upgrade -y && sudo apt install -y software-properties-common ansible git cowsay
 
 # Execute Ansible playbook remotely
 # ansible-pull -K -U https://github.com/Kaweees/ansible.git local.yml --ask-become-pass --tags minimal-install
 
 # Clone and execute Ansible playbook locally
-git clone https://github.com/Kaweees/ansible.git ~/Documents/GitHub/Projects/ansible --recusive && cd ~/Documents/GitHub/Projects/ansible
+git clone https://github.com/Kaweees/ansible.git ~/Documents/GitHub/Projects/ansible --recurse-submodules && cd ~/Documents/GitHub/Projects/ansible
 ansible-playbook -K local.yml --ask-become-pass --tags minimal-install
