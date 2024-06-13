@@ -32,7 +32,7 @@
         - minimal-install
         - install
   tasks:
-    - include: tasks/ssh.yml
+    # - include: tasks/ssh.yml
     - include: tasks/core-setup.yml
     - include: tasks/gui-setup.yml
     - include: tasks/flatpak-setup.yml

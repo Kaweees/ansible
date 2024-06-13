@@ -4,3 +4,16 @@
     - minimal-install
     - install
     - zsh
+
+- name: Install gitstatus plugin
+  ansible.builtin.git:
+    repo: 'https://gitee.com/romkatv/gitstatus.git'
+    dest: "~/gitstatus"
+    recursive: true
+    update: true
+    accept_hostkey: true
+  tags:
+    - minimal-install
+    - install
+    - zsh
+

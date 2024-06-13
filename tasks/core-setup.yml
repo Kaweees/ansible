@@ -20,6 +20,7 @@
       - man
       - network-manager # nmtui
       - network-manager-gnome # nm-connection-editor
+      - picom
       - ripgrep
       - stow
       - sudo
