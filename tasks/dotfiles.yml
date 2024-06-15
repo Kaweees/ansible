@@ -1,16 +1,7 @@
 - name: Install dotfiles
-  ansible.builtin.git:
-    repo: 'https://github.com/Kaweees/dotfiles'
-    dest: "{{ dotfiles_location }}"
-    recursive: true
-    update: true
-    accept_hostkey: true
-  tags:
-    - minimal-install
-    - install
-    - dotfiles
-- name: Stow dotfiles
-  shell: "cd {{ dotfiles_location }} && chmod +x ./setup.sh && bash ./setup.sh"
+  become: true
+  ansible.builtin.shell:
+    cmd: "git clone https://github.com/Kaweees/dotfiles.git {{ dotfiles_location }} --recurse-submodules && cd {{ dotfiles_location }} && python3 stowizer.py"
   tags:
     - minimal-install
     - install

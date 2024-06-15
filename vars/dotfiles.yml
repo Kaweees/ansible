@@ -1,4 +1,3 @@
 ---
 # Set the location of the dotfiles repository
 dotfiles_location: "{{ lookup('env', 'HOME') }}/Documents/GitHub/Projects/dotfiles"
-"{{ nodejs_npm_global_packages }}"
