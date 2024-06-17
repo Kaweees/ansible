@@ -40,6 +40,7 @@
     - include: tasks/discord-setup.yml
     - include: tasks/gh-setup.yml
     - include: tasks/neovim-setup.yml
+    - include: tasks/rust-setup.yml
     - include: tasks/zsh-setup.yml
     - include: tasks/dotfiles.yml
     # - include: tasks/suckless-setup.yml

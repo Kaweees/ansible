@@ -7,7 +7,7 @@
 
 - name: Install gitstatus plugin
   ansible.builtin.git:
-    repo: 'https://gitee.com/romkatv/gitstatus.git'
+    repo: 'https://github.com/romkatv/gitstatus.git'
     dest: "~/gitstatus"
     recursive: true
     update: true
@@ -18,15 +18,21 @@
     - zsh
 
 - name: Install onefetch
-  shell: |
-    sudo add-apt-repository ppa:o2sh/onefetch
-    sudo apt-get update
-    sudo apt-get install onefetch
+  shell: cargo install onefetch
+  tags:
+    - minimal-install
+    - install
+    - zsh
+    - rust
 
 - name: Install gpg
   shell: |
     sudo apt update
     sudo apt install -y gpg
+  tags:
+    - minimal-install
+    - install
+    - zsh
 
 - name: Install eza
   shell: |
@@ -35,6 +41,10 @@
     echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
     sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
     sudo apt update
+  tags:
+    - minimal-install
+    - install
+    - zsh
 
 - name: Create usefull directories
   shell: |
@@ -42,3 +52,7 @@
     mkdir ~/Documents/GitHub/Forks
     mkdir ~/Documents/Github/Projects
     mkdir ~/Documents/GitHub/Work
+  tags:
+    - minimal-install
+    - install
+    - zsh

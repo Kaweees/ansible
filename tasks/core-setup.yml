@@ -6,6 +6,7 @@
       - atool
       - autoconf
       - build-essential
+      - cmake
       - curl
       - dkms # Dynamic Kernel Module Support
       - ffmpeg
