@@ -1,0 +1,47 @@
+- name: Install Kernel Headers
+  shell: |
+    sudo apt install linux-headers-$(uname -r)
+  tags:
+    - install
+    - cuda
+
+- name: Enable the contrib repository
+  shell: |
+    sudo add-apt-repository contrib
+  tags:
+    - install
+    - cuda
+
+- name: Remove Outdated Signing Key
+  shell: |
+    sudo apt-key del 7fa2af80
+  tags:
+    - install
+    - cuda
+
+- name: Install Repo
+  shell: |
+    sudo dpkg -i cuda-repo-<distro>-X-Y-local_<version>*_x86_64.deb
+  tags:
+    - install
+    - cuda
+
+- name: Enroll ephemeral public GPG key
+  shell: |
+    sudo cp /var/cuda-repo-<distro>-X-Y-local/cuda-*-keyring.gpg /usr/share/keyrings/
+  tags:
+    - install
+    - cuda
+
+- name: Install Linux Headers
+  become: true
+  package:
+    name:
+    - linux-headers-$(uname -r)
+    - neofetch
+    - nmap
+    - ranger
+    - cowsay
+  tags:
+    - install
+    - core

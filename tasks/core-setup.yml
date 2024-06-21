@@ -6,6 +6,7 @@
       - atool
       - autoconf
       - build-essential
+      - clang-format
       - cmake
       - curl
       - dkms # Dynamic Kernel Module Support

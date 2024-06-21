@@ -19,6 +19,8 @@
 
 - name: Install onefetch
   shell: cargo install onefetch
+  environment:
+    PATH: "{{ ansible_env.HOME }}/.cargo/bin:{{ ansible_env.PATH }}"
   tags:
     - minimal-install
     - install
