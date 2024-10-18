@@ -50,10 +50,10 @@
 
 - name: Create usefull directories
   shell: |
-    mkdir ~/Photos/screenshots
-    mkdir ~/Documents/GitHub/Forks
-    mkdir ~/Documents/Github/Projects
-    mkdir ~/Documents/GitHub/Work
+    mkdir -p ~/Photos/screenshots
+    mkdir -p ~/Documents/GitHub/Forks
+    mkdir -p ~/Documents/Github/Projects
+    mkdir -p ~/Documents/GitHub/Work
   tags:
     - minimal-install
     - install
